@@ -1,0 +1,27 @@
+name: index file
+on: push
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: chekcout code
+              run : echo "Hello World"
+            - name: say hello  
+              uses: actions/checkout@v7  
+    Test:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Chekout code
+              uses: actions/checkout@v7
+            - name: say hello  
+              run : echo "Second Step"
+
+    Deploy:
+        needs: Test
+        runs-on: ubuntu-latest
+        steps: 
+            - name: Chekout code
+              uses: actions/checkout@v7
+            - name: say hello  
+              run : echo "Third Step"
